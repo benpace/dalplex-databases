@@ -55,7 +55,7 @@ public class Launch {
             }
         }
 
-        Window window = new Window();
+        Window window = new Window(conn);
     }
 
 }
