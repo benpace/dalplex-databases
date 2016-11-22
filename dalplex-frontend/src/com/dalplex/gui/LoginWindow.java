@@ -1,7 +1,10 @@
+package com.dalplex.gui;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import com.dalplex.main.*;
 
 /**
  * @author Ben

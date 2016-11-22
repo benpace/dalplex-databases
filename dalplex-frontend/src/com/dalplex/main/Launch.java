@@ -1,13 +1,17 @@
+package com.dalplex.main;
 /**
  * @author Ben Pace
  */
-import javax.swing.*;
+import javax.swing.JOptionPane;
 import java.sql.*;
+import com.dalplex.gui.*;
+
 
 public class Launch {
     public static void main(String[] args){
         final String DB_URL = "jdbc:mysql://localhost/";
         final String DB_NAME = "javabase";
+
         //Load Driver
         try{
             Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -17,15 +21,17 @@ public class Launch {
             System.out.println(e.getMessage());
         }
 
-        //Get LogIn Info
+        /*
+         * Get login info then attempt to connect, keep attempting until connection is made
+         */
         Connection conn = null;
         boolean validLogin = false;
         while(!validLogin) {
+            //Get login info
             LoginWindow loginPrompt = new LoginWindow();
             Login login = loginPrompt.getLogin();
-            System.out.println(login.getUser());
 
-
+            //Attempt connection
             try {
                 conn = DriverManager.getConnection(DB_URL + DB_NAME,
                         login.getUser(), String.copyValueOf(login.getPass()));
@@ -34,6 +40,7 @@ public class Launch {
                 login.disposePass();
                 loginPrompt.dispose();
                 validLogin = true;
+                System.out.println("Connection successful");
 
             } catch (SQLException e) {
                 login.disposePass();
@@ -48,7 +55,7 @@ public class Launch {
             }
         }
 
-
+        Window window = new Window();
     }
 
 }
