@@ -11,7 +11,7 @@ import java.sql.Connection;
 public class Window extends JFrame{
     private int WINDOW_WIDTH = 1000, WINDOW_HEIGHT = 600;
     private Connection conn;
-    private JPanel panel;
+    private JPanel panel, active;
 
 
     public Window(Connection conn){
@@ -25,17 +25,22 @@ public class Window extends JFrame{
         setLocationRelativeTo(null);
 
         panel = new JPanel(new BorderLayout());
+        panel.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 
         MenuBar menu = new MenuBar(WINDOW_WIDTH / 3, WINDOW_HEIGHT);
         panel.add(menu, BorderLayout.WEST);
 
-        Editor editor = new Editor((int)((double)WINDOW_WIDTH * (2.0/3.0)), WINDOW_HEIGHT);
+        //Editor editor = new Editor((int)((double)WINDOW_WIDTH * (2.0/3.0)), WINDOW_HEIGHT);
 
-        panel.add(editor);
+        //panel.add(editor);
 
         add(panel);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public void setActivePanel(JPanel panel){
+
     }
 
     /*

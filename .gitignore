@@ -2,3 +2,8 @@ dalplex-frontend/.idea
 
 dalplex-frontend/out
 dalplex-frontend/dalplex-frontend.iml
+
+dalplex-frontend/src/SQLTests.java
+database/
+documentation/
+

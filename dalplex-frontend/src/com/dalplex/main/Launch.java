@@ -2,9 +2,11 @@ package com.dalplex.main;
 /**
  * @author Ben Pace
  */
-import javax.swing.JOptionPane;
-import java.sql.*;
-import com.dalplex.gui.*;
+        import javax.swing.JOptionPane;
+        import java.sql.*;
+
+        import com.dalplex.data.Person;
+        import com.dalplex.gui.*;
 
 
 public class Launch {
@@ -44,10 +46,11 @@ public class Launch {
 
             } catch (SQLException e) {
                 login.disposePass();
+                login = null;
                 loginPrompt.dispose();
                 if(e.getCause() instanceof java.net.ConnectException){
                     JOptionPane.showMessageDialog(null, "Cannot connect to DB at " +
-                        DB_URL + DB_NAME);
+                            DB_URL + DB_NAME);
                 }
                 else {
                     JOptionPane.showMessageDialog(null, "Cannot login with given info");
@@ -56,6 +59,15 @@ public class Launch {
         }
 
         Window window = new Window(conn);
+        try {
+            conn.close();
+            System.out.println("Connection closed");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
     }
+
 
 }

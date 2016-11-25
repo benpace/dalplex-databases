@@ -1,7 +1,5 @@
 package com.dalplex.gui;
 
-import com.dalplex.gui.EventHandlers.PreviousFrameHandler;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -23,7 +21,7 @@ public class MenuBar extends JPanel{
         setLayout(new GridLayout(8,1,5,0));
 
         back = new JButton("Back");
-        back.addActionListener(new PreviousFrameHandler());
+
 
         add(back);
         add (new JSeparator());
