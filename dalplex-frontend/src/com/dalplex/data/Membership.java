@@ -1,6 +1,6 @@
 package com.dalplex.data;
 
-import java.sql.Connection;
+import java.sql.*;
 
 /**
  * @author Ben Pace
@@ -35,7 +35,17 @@ public class Membership extends DBItem {
 
     @Override
     public void retrieveFields() {
-        //TODO: Implement retreiveFields
+        try {
+            Statement stmnt = getConnection().createStatement();
+            String sql = "SELECT * FROM " + TABLE + " WHERE id=" + getID();
+            stmnt.execute(sql);
+            ResultSet rs = stmnt.getResultSet();
+            rs.first();
+            setDescription(rs.getString("mem_desc"));
+            setConcurrent(true);
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -45,6 +55,46 @@ public class Membership extends DBItem {
      */
     @Override
     public void publishToDB() {
-        //TODO: Implement publishTODB
+        boolean newEntry;
+        if(getID() < 0) newEntry = true;
+        else            newEntry = false;
+
+        //New Entry
+        try {
+            Statement stmnt = getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            String sql = "SELECT * FROM " + TABLE;
+            if(!newEntry)
+                sql += " WHERE id=" + getID();
+            ResultSet rs = stmnt.executeQuery(sql);
+
+            //find id value for new entry
+            int maxID = 0;
+            if(newEntry) {
+                Statement sizeStmnt = getConnection().createStatement();
+                ResultSet sizeRS = sizeStmnt.executeQuery("SELECT MAX(id) FROM " + TABLE);
+                sizeRS.first();
+                maxID = sizeRS.getInt("MAX(id)");
+                sizeRS.close();
+            }
+
+            if(newEntry) {
+                rs.moveToInsertRow();
+                rs.updateInt("id", ++maxID);
+                setID(maxID);
+            }
+            else
+                rs.first();
+
+            rs.updateString("mem_desc", getDescription());
+
+
+            if(newEntry)    rs.insertRow();
+            else            rs.updateRow();
+
+            rs.beforeFirst();
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

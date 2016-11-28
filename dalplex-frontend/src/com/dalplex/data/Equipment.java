@@ -1,12 +1,12 @@
 package com.dalplex.data;
 
-import java.sql.Connection;
+import java.sql.*;
 
 /**
  * @author Ben Pace
  */
 public class Equipment extends DBItem {
-    private final String TABLE = "equipment";
+    public static final String TABLE = "equipment";
     private String description;
     private int qoh;
 
@@ -38,7 +38,18 @@ public class Equipment extends DBItem {
 
     @Override
     public void retrieveFields() {
-        //TODO: Implement rf
+        try {
+            Statement stmnt = getConnection().createStatement();
+            String sql = "SELECT * FROM " + TABLE + " WHERE equip_id=" + getID();
+            stmnt.execute(sql);
+            ResultSet rs = stmnt.getResultSet();
+            rs.first();
+            setDescription(rs.getString("equip_desc"));
+            setQoh(rs.getInt("qoh"));
+            setConcurrent(true);
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -48,6 +59,47 @@ public class Equipment extends DBItem {
      */
     @Override
     public void publishToDB() {
-        //TODO: Implement p2db
+        boolean newEntry;
+        if(getID() < 0) newEntry = true;
+        else            newEntry = false;
+
+        //New Entry
+        try {
+            Statement stmnt = getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            String sql = "SELECT * FROM " + TABLE;
+            if(!newEntry)
+                sql += " WHERE equip_id=" + getID();
+            ResultSet rs = stmnt.executeQuery(sql);
+
+            //find id value for new entry
+            int maxID = 0;
+            if(newEntry) {
+                Statement sizeStmnt = getConnection().createStatement();
+                ResultSet sizeRS = sizeStmnt.executeQuery("SELECT MAX(equip_id) FROM " + TABLE);
+                sizeRS.first();
+                maxID = sizeRS.getInt("MAX(equip_id)");
+                sizeRS.close();
+            }
+
+            if(newEntry) {
+                rs.moveToInsertRow();
+                rs.updateInt("equip_id", ++maxID);
+                setID(maxID);
+            }
+            else
+                rs.first();
+
+            rs.updateString("equip_desc", getDescription());
+            rs.updateInt("qoh", getQoh());
+
+
+            if(newEntry)    rs.insertRow();
+            else            rs.updateRow();
+
+            rs.beforeFirst();
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

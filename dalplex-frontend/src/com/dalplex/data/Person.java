@@ -8,8 +8,7 @@ import java.util.Date;
  * @author Ben Pace
  */
 public abstract class Person extends DBItem {
-    private String fname, lname, address, city, postcode;
-    private int phone;
+    private String fname, lname, address, city, postcode, phone;
     private Date birthday;
 
 
@@ -22,7 +21,7 @@ public abstract class Person extends DBItem {
 
     public String getFname(){return fname;}
     public String getLname(){return lname;}
-    public int getPhone(){return phone;}
+    public String getPhone(){return phone;}
     public Date getBirthday(){return birthday;}
     public String getAddress(){return address;}
     public String getCity(){return city;}
@@ -30,7 +29,7 @@ public abstract class Person extends DBItem {
 
     public void setFname(String fname){this.fname = fname;  setConcurrent(false);}
     public void setLname(String lname){this.lname = lname;  setConcurrent(false);}
-    public void setPhone(int phone){this.phone = phone;     setConcurrent(false);}
+    public void setPhone(String phone){this.phone = phone;     setConcurrent(false);}
     public void setDate(Date date){this.birthday = date;    setConcurrent(false);}
     public void setAddress(String address){this.address = address;  setConcurrent(false);}
     public void setCity(String city){this.city = city;      setConcurrent(false);}

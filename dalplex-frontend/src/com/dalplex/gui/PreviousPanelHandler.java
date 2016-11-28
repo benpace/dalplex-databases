@@ -17,6 +17,12 @@ public final class PreviousPanelHandler {
 
     public static void addPanel(JPanel panel){ history.push(panel);}
 
-    public static JPanel getLast(){    return history.pop();}
+    public static JPanel getLast(){
+        if(!history.isEmpty())
+            return history.pop();
+        return null;
+
+    }
+
 
 }

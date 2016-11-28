@@ -3,43 +3,77 @@ package com.dalplex.gui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Scanner;
 
 /**
  * @author Ben
  */
 public class Window extends JFrame{
-    private int WINDOW_WIDTH = 1000, WINDOW_HEIGHT = 600;
+    public final int WINDOW_WIDTH = 1000, WINDOW_HEIGHT = 600;
     private Connection conn;
-    private JPanel panel, active;
-
+    private JPanel panel, active, home;
+    private MenuBar menu;
 
     public Window(Connection conn){
         this.conn = conn;
 
         setTitle("Dalplex - Dalhousie Fitness Centre");
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-        setLayout(new FlowLayout());
-
-
-        setLocationRelativeTo(null);
 
         panel = new JPanel(new BorderLayout());
         panel.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 
-        MenuBar menu = new MenuBar(WINDOW_WIDTH / 3, WINDOW_HEIGHT);
+        menu = new MenuBar(WINDOW_WIDTH / 3, WINDOW_HEIGHT, this);
         panel.add(menu, BorderLayout.WEST);
 
-        //Editor editor = new Editor((int)((double)WINDOW_WIDTH * (2.0/3.0)), WINDOW_HEIGHT);
+        home = new Home(WINDOW_WIDTH * (2/3), WINDOW_HEIGHT);
+        active = home;
 
-        //panel.add(editor);
+        panel.add(active, BorderLayout.CENTER);
 
         add(panel);
         setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                try {
+                    conn.close();
+                    System.out.println("Connection closed");
+                    //dispose();
+                    System.exit(0);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
+
+
     }
 
-    public void setActivePanel(JPanel panel){
+
+    public Connection getConnection(){return conn;}
+
+    public void setActivePanel(JPanel active, boolean storePrevious){
+        if(storePrevious)   PreviousPanelHandler.addPanel(this.active);
+
+        panel.remove(this.active);
+        this.active = active;
+        panel.add(active, BorderLayout.CENTER);
+
+        active.updateUI();
+    }
+
+    public void windowClosing(WindowEvent e){
 
     }
 
@@ -47,7 +81,15 @@ public class Window extends JFrame{
      * Simple test method
      */
     public static void main(String args[]){
+        Scanner kb = new Scanner(System.in);
         Window w = new Window(null);
+        w.setActivePanel(new QuickViewMember(w.WINDOW_WIDTH * (2/3), w.WINDOW_HEIGHT, w.getConnection()), true);
+        /*JPanel i = new JPanel(), j = new JPanel();
+        i.setBackground(Color.BLUE);
+        j.setBackground(Color.RED);
+        w.setActivePanel(i);
+        kb.nextLine();
+        w.setActivePanel(j);*/
     }
 
 }

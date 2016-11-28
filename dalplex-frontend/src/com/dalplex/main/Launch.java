@@ -5,14 +5,15 @@ package com.dalplex.main;
         import javax.swing.JOptionPane;
         import java.sql.*;
 
-        import com.dalplex.data.Person;
+        import com.dalplex.data.Employee;
+        import com.dalplex.data.Member;
         import com.dalplex.gui.*;
 
 
 public class Launch {
     public static void main(String[] args){
         final String DB_URL = "jdbc:mysql://localhost/";
-        final String DB_NAME = "javabase";
+        final String DB_NAME = "dalplex";
 
         //Load Driver
         try{
@@ -58,13 +59,35 @@ public class Launch {
             }
         }
 
+
+
+
+        //TODO: Remove this
+        //Member m = new Member(1, conn);
+        Employee e = new Employee(conn);
+        e.setFname("Ben");
+        e.setLname("Pace");
+        e.setPhone("902-740-4512");
+        e.setDate(new Date(0));
+        e.setAddress("Somewhere st.");
+        e.setCity("CityVille");
+        e.setPostcode("b5a2n8");
+        e.setTitle("Chief");
+        e.setSalary(5);
+        e.publishToDB();
+
+        /*try {
+            Statement s = conn.createStatement();
+            ResultSet rs = s.executeQuery("SELECT id FROM employees WHERE")
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        }*/
+        Employee e2 = new Employee(2, conn);
+        e2.setTitle("Cool dude");
+        e2.publishToDB();
+        //System.out.println(m);
         Window window = new Window(conn);
-        try {
-            conn.close();
-            System.out.println("Connection closed");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
 
 
     }
