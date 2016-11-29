@@ -53,7 +53,7 @@ public class Window extends JFrame{
                 }
             }
         });
-
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
 
@@ -73,9 +73,7 @@ public class Window extends JFrame{
         active.updateUI();
     }
 
-    public void windowClosing(WindowEvent e){
 
-    }
 
     /*
      * Simple test method

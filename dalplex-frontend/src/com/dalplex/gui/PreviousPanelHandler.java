@@ -12,6 +12,7 @@ import java.util.Stack;
 public final class PreviousPanelHandler {
 
     private static Stack<JPanel> history = new Stack<JPanel>();
+    private static Window window;
 
     private PreviousPanelHandler(){}
 
@@ -22,6 +23,12 @@ public final class PreviousPanelHandler {
             return history.pop();
         return null;
 
+    }
+
+    public static void setWindow(Window w){window = w;}
+
+    public static void goBack(){
+        window.setActivePanel(getLast(),false);
     }
 
 

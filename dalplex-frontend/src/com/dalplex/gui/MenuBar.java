@@ -54,27 +54,27 @@ public class MenuBar extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == buttons[0]){
-            window.setActivePanel(new MemberQuickView(window.WINDOW_WIDTH * (2/3), window.WINDOW_HEIGHT, window.getConnection()), true);
+            window.setActivePanel(new MemberQuickView(window.WINDOW_WIDTH * (2/3), window.WINDOW_HEIGHT, window.getConnection(), window), true);
 
         }
         else if(e.getSource() == buttons[1]){
             System.out.println("Events");
-            window.setActivePanel(new EventQuickView(window.WINDOW_WIDTH * (2/3), window.WINDOW_HEIGHT, window.getConnection()), true);
+            window.setActivePanel(new EventQuickView(window.WINDOW_WIDTH * (2/3), window.WINDOW_HEIGHT, window.getConnection(), window), true);
         }
         else if(e.getSource() == buttons[2]){
             System.out.println("Payroll");
-            window.setActivePanel(new PayrollQuickView(window.WINDOW_WIDTH * (2/3), window.WINDOW_HEIGHT, window.getConnection()), true);
+            window.setActivePanel(new PayrollQuickView(window.WINDOW_WIDTH * (2/3), window.WINDOW_HEIGHT, window.getConnection(), window), true);
         }
         else if(e.getSource() == buttons[3]){
-            window.setActivePanel(new EmployeeQuickView(window.WINDOW_WIDTH * (2/3), window.WINDOW_HEIGHT, window.getConnection()), true);
+            window.setActivePanel(new EmployeeQuickView(window.WINDOW_WIDTH * (2/3), window.WINDOW_HEIGHT, window.getConnection(), window), true);
             System.out.println("'Employee' pressed");
         }
         else if(e.getSource() == buttons[4]){
-            window.setActivePanel(new RoomQuickView(window.WINDOW_WIDTH * (2/3), window.WINDOW_HEIGHT, window.getConnection()), true);
+            window.setActivePanel(new RoomQuickView(window.WINDOW_WIDTH * (2/3), window.WINDOW_HEIGHT, window.getConnection(), window), true);
             System.out.println("Rooms");
         }
         else if(e.getSource() == buttons[5]){
-            window.setActivePanel(new EquipmentQuickView(window.WINDOW_WIDTH * (2/3), window.WINDOW_HEIGHT, window.getConnection()), true);
+            window.setActivePanel(new EquipmentQuickView(window.WINDOW_WIDTH * (2/3), window.WINDOW_HEIGHT, window.getConnection(), window), true);
             System.out.println("Equipment");
         }
         else if(e.getSource() == back){

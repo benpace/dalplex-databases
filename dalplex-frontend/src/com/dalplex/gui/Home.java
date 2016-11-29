@@ -17,7 +17,7 @@ public class Home extends JPanel {
         title.setFont(new Font(title.getFont().getName(), Font.PLAIN, 35));
         body = new JTextArea("Welcome to the database management software for Dalhousie's Dalplex fitness centre. " +
                 "From here you may access many Dalplex systems, including membership and payroll. Start by selecting" +
-                " an option from the left!");
+                " an option from the left! \nChanges made to the Database may require reloading a page");
         body.setLineWrap(true);
         body.setEditable(false);
         body.setMargin(new Insets(30, 30, 30, 30));

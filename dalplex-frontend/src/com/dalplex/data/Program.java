@@ -131,7 +131,7 @@ public class Program extends DBItem {
                 rs.first();
 
             rs.updateString("event_desc", getDescription());
-            rs.updateDate("eventDate", new java.sql.Date(getDate().getTime()));
+            rs.updateDate("event_date", new java.sql.Date(getDate().getTime()));
             rs.updateInt("event_room", room.getID());
 
 

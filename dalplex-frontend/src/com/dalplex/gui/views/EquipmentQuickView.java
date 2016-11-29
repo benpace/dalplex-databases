@@ -2,8 +2,12 @@ package com.dalplex.gui.views;
 
 import com.dalplex.data.Equipment;
 import com.dalplex.data.Member;
+import com.dalplex.gui.Window;
+import com.dalplex.gui.editors.EquipmentEditor;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,20 +17,27 @@ import java.util.ArrayList;
 /**
  * @author Ben Pace
  */
-public class EquipmentQuickView extends QuickView {
-    private static final String[] headerText = {"Description", "QOH", "Edit", "Delete"};
+public class EquipmentQuickView extends QuickView implements ActionListener{
+    private static final String[] headerText = {"Description", "QOH", "Edit"};
     ArrayList<Equipment> equipment;
-    public EquipmentQuickView(int width, int height, Connection conn){
-        super(width, height, conn, "Equipment", 4, headerText);
+    private JButton[] editButtons;
+    public EquipmentQuickView(int width, int height, Connection conn, Window w){
+        super(width, height, conn, w, "Equipment", headerText.length, headerText);
         equipment = new ArrayList<>();
         getElements();
-        for(Equipment m: equipment){
+        editButtons = new JButton[equipment.size()];
+        for(int i = 0;i < equipment.size(); i++){
+            Equipment m = equipment.get(i);
             content.add(new JLabel(m.getDescription()));
             content.add(new JLabel("" + m.getQoh()));
-            content.add(new JLabel("X"));
-            content.add(new JLabel("X"));
+
+            editButtons[i] = new JButton("X");
+            editButtons[i].setHorizontalTextPosition(SwingConstants.CENTER);
+            editButtons[i].addActionListener(this);
+
+            content.add(editButtons[i]);
         }
-        for(int i = 0;i < ((4 * 21) - (4 * equipment.size()));i++)  content.add(new JSeparator());
+        for(int i = 0;i < ((headerText.length * 21) - (headerText.length * equipment.size()));i++)  content.add(new JSeparator());
     }
 
 
@@ -42,6 +53,18 @@ public class EquipmentQuickView extends QuickView {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        for(int i = 0;i < editButtons.length;i++) {
+            if (e.getSource() == editButtons[i]) {
+                getWindow().setActivePanel(new EquipmentEditor(500, 500, equipment.get(i)), true);
+            }
+        }
+        if(e.getSource()==getNewObjectButton()){
+            getWindow().setActivePanel(new EquipmentEditor(500, 500, new Equipment(getConnection())), true);
         }
     }
 }
