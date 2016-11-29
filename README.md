@@ -12,9 +12,12 @@ How to Run/Build
 Once the database is setup with the SQL commands submitted you may run the frontend application
 
 You should be able to run either standalone with 
-1. dalplex-frontend.jar
+
+1.dalplex-frontend.jar
+
 or by compiling from source
-2. com.dalplex
+
+2.com.dalplex
 
 If compiling by source you will need
 * jdk 1.8.0
