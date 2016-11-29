@@ -1,13 +1,8 @@
 package com.dalplex.main;
-/**
- * @author Ben Pace
- */
-        import javax.swing.JOptionPane;
-        import java.sql.*;
+import javax.swing.JOptionPane;
+import java.sql.*;
 
-        import com.dalplex.data.Employee;
-        import com.dalplex.data.Member;
-        import com.dalplex.gui.*;
+import com.dalplex.gui.*;
 
 
 public class Launch {

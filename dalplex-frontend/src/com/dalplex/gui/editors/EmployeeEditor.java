@@ -10,9 +10,6 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * @author Ben Pace
- */
 public class EmployeeEditor extends Editor implements ActionListener{
     private Employee employee;
     private final String[] fieldNames = {

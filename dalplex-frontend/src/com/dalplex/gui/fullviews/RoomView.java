@@ -7,9 +7,6 @@ import com.dalplex.gui.FullView;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * @author Ben Pace
- */
 public class RoomView extends FullView{
     private Room room;
     private final String[] fieldNames = {

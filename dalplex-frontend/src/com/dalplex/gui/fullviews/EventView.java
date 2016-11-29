@@ -1,6 +1,5 @@
 package com.dalplex.gui.fullviews;
 
-import com.dalplex.data.Equipment;
 import com.dalplex.data.Member;
 import com.dalplex.data.Program;
 import com.dalplex.gui.FullView;
@@ -8,9 +7,7 @@ import com.dalplex.gui.FullView;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * @author Ben Pace
- */
+
 public class EventView extends FullView{
     private Program event;
     private final String[] fieldNames = {

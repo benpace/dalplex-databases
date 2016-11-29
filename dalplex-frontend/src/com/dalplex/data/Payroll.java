@@ -6,9 +6,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
 
-/**
- * @author Ben Pace
- */
 public class Payroll extends DBItem {
     public static final String TABLE = "payroll";
     private Employee employee;

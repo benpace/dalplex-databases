@@ -1,8 +1,5 @@
 package com.dalplex.main;
 
-/**
- * @author Ben
- */
 public class Login {
     private String user;
     private char[] pass;

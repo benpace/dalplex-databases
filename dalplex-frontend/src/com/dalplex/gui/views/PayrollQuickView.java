@@ -1,6 +1,5 @@
 package com.dalplex.gui.views;
 
-import com.dalplex.data.Member;
 import com.dalplex.data.Payroll;
 import com.dalplex.gui.Window;
 import com.dalplex.gui.editors.PayrollEditor;
@@ -8,15 +7,10 @@ import com.dalplex.gui.editors.PayrollEditor;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
-/**
- * @author Ben Pace
- */
+
 public class PayrollQuickView extends QuickView implements ActionListener{
     private static final String[] headerText = {"Employee", "Last Worked", "Earned", "Total Earned", "Edit"};
     private ArrayList<Payroll> payroll;

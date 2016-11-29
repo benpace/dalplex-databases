@@ -7,9 +7,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 
-/**
- * @author Ben Pace
- */
 public class Program extends DBItem {
     public static final String TABLE = "program";
     private String description;

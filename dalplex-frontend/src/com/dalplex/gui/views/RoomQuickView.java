@@ -1,25 +1,16 @@
 package com.dalplex.gui.views;
 
-import com.dalplex.data.Member;
-import com.dalplex.data.Program;
 import com.dalplex.data.Room;
 import com.dalplex.gui.Window;
 import com.dalplex.gui.editors.RoomEditor;
-import com.dalplex.gui.fullviews.MemberView;
 import com.dalplex.gui.fullviews.RoomView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
-/**
- * @author Ben Pace
- */
 public class RoomQuickView extends QuickView implements ActionListener{
     private static final String[] headerText = {"Description", "Edit", "View"};
     private ArrayList<Room> rooms;

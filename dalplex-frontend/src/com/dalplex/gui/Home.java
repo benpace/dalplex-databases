@@ -3,9 +3,7 @@ package com.dalplex.gui;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * @author Ben Pace
- */
+
 public class Home extends JPanel {
     private JLabel title;
     private JTextArea body;

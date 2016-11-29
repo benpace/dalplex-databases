@@ -6,9 +6,7 @@ import com.dalplex.gui.FullView;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * @author Ben Pace
- */
+
 public class EmployeeView extends FullView {
     private Employee employee;
     private final String[] fieldNames = {

@@ -1,17 +1,12 @@
 package com.dalplex.gui.views;
 
-import com.dalplex.gui.*;
 import com.dalplex.gui.Window;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
-import java.util.ArrayList;
 
-/**
- * @author Ben Pace
- */
 public abstract class QuickView extends JPanel implements ActionListener{
     JPanel content, titlePanel;
     private JScrollPane scrollPane;

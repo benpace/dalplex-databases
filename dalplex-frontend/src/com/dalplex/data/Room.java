@@ -6,9 +6,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-/**
- * @author Ben Pace
- */
 public class Room extends DBItem{
     public static final String TABLE = "room";
     private String description;

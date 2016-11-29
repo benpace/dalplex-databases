@@ -6,11 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import com.dalplex.main.*;
 
-/**
- * @author Ben
- */
 public class LoginWindow extends JFrame implements ActionListener{
-    private final int WINDOW_WIDTH = 300, WINDOW_HEIGHT = 150;
+    private final int WINDOW_WIDTH = 300, WINDOW_HEIGHT = 125;
 
     private JPanel main, labels, buttons, input;
     private JLabel userPrompt, passPrompt;
@@ -38,7 +35,7 @@ public class LoginWindow extends JFrame implements ActionListener{
         passwordField.setColumns(16);
         passwordField.addActionListener(this);
 
-        submit = new JButton("Submit");
+        submit = new JButton("Log In");
         submit.addActionListener(this);
 
         main.add(userPrompt);

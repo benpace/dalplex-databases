@@ -73,21 +73,4 @@ public class Window extends JFrame{
         active.updateUI();
     }
 
-
-
-    /*
-     * Simple test method
-     */
-    public static void main(String args[]){
-        Scanner kb = new Scanner(System.in);
-        Window w = new Window(null);
-        w.setActivePanel(new QuickViewMember(w.WINDOW_WIDTH * (2/3), w.WINDOW_HEIGHT, w.getConnection()), true);
-        /*JPanel i = new JPanel(), j = new JPanel();
-        i.setBackground(Color.BLUE);
-        j.setBackground(Color.RED);
-        w.setActivePanel(i);
-        kb.nextLine();
-        w.setActivePanel(j);*/
-    }
-
 }

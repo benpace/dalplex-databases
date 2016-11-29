@@ -2,9 +2,6 @@ package com.dalplex.data;
 
 import java.sql.*;
 
-/**
- * @author Ben Pace
- */
 public class Equipment extends DBItem {
     public static final String TABLE = "equipment";
     private String description;

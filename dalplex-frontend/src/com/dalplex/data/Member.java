@@ -2,9 +2,7 @@ package com.dalplex.data;
 
 import java.sql.*;
 
-/**
- * @author Ben Pace
- */
+
 public class Member extends Person{
     public static final String TABLE = "reg_users";
 

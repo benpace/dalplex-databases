@@ -1,13 +1,9 @@
 package com.dalplex.gui.editors;
 
 import com.dalplex.gui.FullView;
-
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
-/**
- * @author Ben Pace
- */
 public abstract class Editor extends FullView implements ActionListener{
     private JButton submit;
     public Editor(int width, int height, String title) {

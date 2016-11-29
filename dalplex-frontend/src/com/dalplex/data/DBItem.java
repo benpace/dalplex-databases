@@ -6,7 +6,6 @@ import java.sql.Connection;
  * Defines an abstract class for all objects created by the database
  * Given the unique ID and table it is from, find the remaining fields and populate
  * can be concurrent w/ DB or not, if being edited.
- * @author Ben Pace
  */
 public abstract class DBItem {
     private int ID;

@@ -2,17 +2,12 @@ package com.dalplex.gui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-/**
- * @author Ben Pace
- */
+
 public class FullView extends JPanel{
     private JPanel fields;
     private JPanel header;
     private JScrollPane scrollPane;
-    private String title;
 
     public FullView(int width, int height, String title){
         setSize(width, height);

@@ -11,9 +11,6 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 import java.util.ArrayList;
 
-/**
- * @author Ben Pace
- */
 
 public class MemberQuickView extends QuickView implements ActionListener{
     private static final String[] headerText = {"Name", "Postcode", "Membership", "Edit", "View"};

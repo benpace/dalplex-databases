@@ -1,23 +1,14 @@
 package com.dalplex.gui.editors;
 
 import com.dalplex.data.Room;
-import com.dalplex.data.Membership;
 import com.dalplex.gui.PreviousPanelHandler;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 
-/**
- * @author Ben Pace
- */
+
 public class RoomEditor extends Editor implements ActionListener{
     private Room room;
     private final String[] fieldNames = {

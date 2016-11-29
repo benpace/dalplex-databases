@@ -7,9 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * @author Ben
- */
+
 public class MenuBar extends JPanel implements ActionListener{
     private int width, height;
     private JButton back, home;

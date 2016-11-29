@@ -7,7 +7,6 @@ import java.util.Stack;
 /**
  * Class to store and access history of JPanel objects,
  * primarily for use by the back button in the GUI
- * @author Ben
  */
 public final class PreviousPanelHandler {
 

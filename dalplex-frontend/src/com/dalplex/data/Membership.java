@@ -2,9 +2,6 @@ package com.dalplex.data;
 
 import java.sql.*;
 
-/**
- * @author Ben Pace
- */
 public class Membership extends DBItem {
     private final String TABLE = "membership";
     private String description;

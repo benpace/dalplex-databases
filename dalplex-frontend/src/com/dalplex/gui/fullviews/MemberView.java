@@ -6,9 +6,7 @@ import com.dalplex.gui.FullView;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * @author Ben Pace
- */
+
 public class MemberView extends FullView {
     private Member member;
     private final String[] fieldNames = {

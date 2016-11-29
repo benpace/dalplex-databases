@@ -4,9 +4,6 @@ import java.sql.Connection;
 import java.util.Date;
 
 
-/**
- * @author Ben Pace
- */
 public abstract class Person extends DBItem {
     private String fname, lname, address, city, postcode, phone;
     private Date birthday;

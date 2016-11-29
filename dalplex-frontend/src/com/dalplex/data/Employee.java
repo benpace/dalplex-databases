@@ -2,9 +2,6 @@ package com.dalplex.data;
 
 import java.sql.*;
 
-/**
- * @author Ben Pace
- */
 public class Employee extends Person {
     public static final String TABLE = "employee";
     private String title;
